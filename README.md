@@ -1,5 +1,20 @@
-# realestimate
+# Realestimate
+![](/data/images/Screenshot-2020-07-13-at-16.59.52.png)
 A data-driven tool   to evaluate proprieties in King County, WA with geospatial analysis (GIS).  Performance close to Zillow's estimates for off-market houses.
+Performance close to Zillow's estimates for off-market houses.
+
+![](/data/images/starplot-performance-comparison-bestmodel-vs-zillow.png)
+
+**Best model off-market performance**
+<br/>
+<br/>
+![](/data/images/king-county-houses-best-model-performance.png)
+<br/>
+<br/>
+**Zillow's off-market performance for King County**
+<br/>
+<br/>
+![](/data/images/zestimates-kingcounty-performance.png)
 
 ## The task
 *"For this project, you'll be working with the King County House Sales dataset. We've modified the dataset to make it a bit more fun and challenging. The dataset can be found in the file "kc_house_data.csv", in this repo.*
@@ -10,6 +25,17 @@ A data-driven tool   to evaluate proprieties in King County, WA with geospatial 
 
  
 ***Based on the results of your models, your presentation should discuss at least two concrete features that highly influence housing prices****."
+
+## Methodology 
+For this project we first focused on Business Understanding. During this phase we:
+
+- Got some domain knowledge on the real-estate business
+
+- Formulated some questions of business relevance that we want to address with our regression analysis
+
+ 
+
+For the regression analysis we followed the well-known methodology called Obtain Scrub Explore Model iNterpret - OSEMN
 
 ## Business Understanding
 Very briefly: we know that the evaluation of a house when selling or buying it, depends on:
@@ -42,7 +68,6 @@ However, we don't know effectively how these features affect house prices analyt
 
 1. “The agency gave me an estimate on that house I want to sell, but I’d love a second opinion. Where can I find it?”
 
- 
 
 **Buyer/Inference**
 
@@ -53,7 +78,6 @@ However, we don't know effectively how these features affect house prices analyt
 
 3. “I want to do an MVP of a real-estate price predictor. Is it possible to reach an accuracy close to industry standards with just an MVP?“
 
- 
 
 **Urban developer**
 
@@ -63,4 +87,12 @@ However, we don't know effectively how these features affect house prices analyt
 
 4.3. What about for an upper income class member (median upper income)?”
 
-![Urban developer](/data/images/Screenshot-2020-06-30-at-19.32.02.png)
+## Data scrubbing
+Check notebook "data_scrubbing" for descriptive statistics and full data scrubbing. 
+
+## Business Recommendations
+
+### 1. Seller/Prediction
+*“The agency gave me an estimate on that house I want to sell, but I’d love a second opinion. Where can I find it?”* <br/>
+
+![](/data/images/Screenshot-2020-06-30-at-19.32.02.png)

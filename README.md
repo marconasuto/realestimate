@@ -86,6 +86,97 @@ However, we don't know effectively how these features affect house prices analyt
 
 4.3. What about for an upper income class member (median upper income)?”
 
+## Models
+For learning reasons, we tried to map dozens of models in order to:
+
+1. See the effect of certain techqniques and design choices 
+
+2. Try to describe the phenomenon with models not the other way round (in other words, trying to be as agnostic as possible towards the phenomenon):  there are a lot of examples online of multilinear regression on predicting the price in King County using the same dataset we worked on. Since there are clear issues, as we will see, with outliers and non-linearity of pricing, the typical approach that we've seen, which we tried to avoid (although with limitations due to knowledge), is to linearise the problem, manipulating the dataset so that a multilinear regression "turns to be" adequate enough.
+
+3. Select the best model based also on a good interpretrability (rather than just evaluating on standard metrics to assess regression models)
+
+4. Select the best model based on accuracy
+
+ 
+
+Metrics used to assess models:
+
+ 
+
+- Adj. R^2
+
+- Train and test RMSE
+
+- 10-fold cross validation mean R^2
+
+- AIC
+
+- Residual standard error (RSE): the average amount that the response will deviate from the true regression line
+
+ 
+
+On the other hand we wanted to go beyond the metrics and measure the linearity of the model with:
+
+ 
+
+- qq-plots and residuals histograms (normality)
+
+- Train and test residuals plots (heteroskedasticity)
+
+- Partial-residual plots 
+
+- Influence plots (outliers)
+
+- Prediction intervals plots
+
+ 
+
+When looking at qq-plots and heteroskedasticity, it is clear that the models show issues with linearity as we have:
+
+- Heavy tails qq-plots
+
+- Funnel-shaped heteroskedasticity
+
+ 
+
+We adopted design patterns in order to "map" several models according to conditions. The hierarchy used is:
+
+ 
+
+1. First split: 
+
+   1.1. Dataset with outliers
+
+   1.2 Dataset without ouliers
+
+<br/> 
+
+    2. Second split: for each dataset in 1)
+
+       2.1. Dataset without multicolinearity removed
+
+       2.2. Dataset with multicolinearity removed using correlation matrix
+
+       2.3 Dataset with multicolinearity removed using VIF
+
+ <br/>
+
+       3. Third split: for each dataset in 2)
+
+          3.1. Categorical-level-threshold < 29
+
+          3.2 Categorical-level-threshold < 6
+
+
+          4. Fourth split: for each dataset in 3) 
+
+             4.1. Log-transformed continous variables
+
+             4.2. Log-transformed + MinMax scaling
+
+             4.3. Log-transformed + Robust Scaling
+
+             4.4. Log-transfomred + Standard Scaling
 ## Data scrubbing
 Check notebook "data_scrubbing" for descriptive statistics and full data scrubbing. 
 
@@ -95,13 +186,79 @@ Check notebook "data_scrubbing" for descriptive statistics and full data scrubbi
 *“The agency gave me an estimate on that house I want to sell, but I’d love a second opinion. Where can I find it?”* <br/>
 
 For a typical house in King County, worth $450k, Realestimate predicts a price with an error of ±$40k around its real value.
+
 ### 2. Buyer/Inference
 *"I want to invest buying a new house. What are the features that matter the most to maximise my investment?"*
 ![](/data/images/multilinear-feature_importance-barplot.png)
+1. Clustered locations (zipcodes)
 
+2. log-Median-Household-Income: how to interpret this variable - let's take the median household income by income tier in Washington (source: Pew data). 
+
+ 
+
+      Lower income: $26,436.00
+
+      Middle income: $80,615.00
+
+      Upper income: $188,102.00
+
+
+
+      Upper income/middle income = 2.33
+
+      Upper income/ lower income =  7.11
+
+      Middle income/ lower income = 3.05
+
+
+
+      Median increase in housing price considering all other variables fixed:
+
+
+
+      Lower income tract to middle income tract: $67,103  
+
+      Lower income tract to upper income tract: $155,606
+
+      Middle income tract to upper income tract: $88,464
+
+ 
+
+ 
+
+3. Grade: an increase of 1 rank for a house means an increase of the median price of $106,233, considering all other variables fixed
+
+
+4. log-bathrooms: an increase of 1 bathroom means a median increase of the price of $22458, considering all other variables fixed
+
+5. View 2.0
+
+6. log-sqft_living15: an increase of 50% of the sqft living surface of the 15 nearest houses around the selected proprietry, considering all other variables fixed, means a median increase of the price of $7,967
+
+7. log-bedrooms: an increase of 1 bedroom means a median increase of the price of $11,392,  considering all other variables fixed 
+
+8. floors: one extra floor means an increase of the median price of $12329,  considering all other variables fixed 
+
+9. condition: an increase of 1 rank for a house means an increase of the median price of $11,035 , considering all other variables fixed
 ### 3. Realestimate as a startup
 *“I want to do an MVP of a real-estate price predictor. Is it possible to reach an accuracy close to industry standards with just an MVP?“*
+<br/>
+Although doing a comparison with Zillow is not straight forward, we can still make some benchmarking. Let's take Zillow's official data for King County off-markets homes (available downloading the excel sheet on their official page).
 
+We reported in the table below our model performance using Zillow official performance parameters defiitnions. 
+
+As we can see, our model performance is very satisfying considering the difference in terms of technical and economical means, knowledge and experience of Zillow's data science team w.r.t mine. Our average median error (training and test set) is only 28.9% less accurate than Zillow's. As far as known at the time this report has been finalised (June 2020), it is one of the best performance available online for regression on King County Housing dataset.
+
+**Best model off-market performance**
+<br/>
+<br/>
+![](/data/images/king-county-houses-best-model-performance.png)
+<br/>
+<br/>
+**Zillow's off-market performance for King County**
+<br/>
+<br/>
+![](/data/images/zestimates-kingcounty-performance.png)
 
 ### 4. Urban developer
 

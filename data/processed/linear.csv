@@ -1,0 +1,11 @@
+Description,RMSE training,RMSE test,R-squared training,R-squared test,Adjusted R-squared training,Adjusted R-squared test,Average R-squared 10-Fold Cross Validation,Standard deviation of average R-squared Cross Validation
+linear_model,262413.371,258630.055,0.493,0.492,0.493,0.492,0.491,0.025
+linear_model-log,262413.371,258630.055,0.493,0.492,0.493,0.492,0.491,0.025
+linear_model-log-minmax,262413.371,258630.055,0.493,0.492,0.493,0.492,0.491,0.025
+linear_model-log-robscal,262413.371,258630.055,0.493,0.492,0.493,0.492,0.491,0.025
+linear_model-log-std,262413.371,258630.055,0.493,0.492,0.493,0.492,0.491,0.025
+linear_model-nooutliers,179365.713,177887.216,0.391,0.388,0.391,0.388,0.390,0.020
+linear_model-log-nooutliers,185738.077,184507.462,0.347,0.342,0.347,0.342,0.346,0.017
+linear_model-log-minmax-nooutliers,185738.077,184507.462,0.347,0.342,0.347,0.342,0.346,0.017
+linear_model-log-robscal-nooutliers,185738.077,184507.462,0.347,0.342,0.347,0.342,0.346,0.017
+linear_model-log-std-nooutliers,185738.077,184507.462,0.347,0.342,0.347,0.342,0.346,0.017

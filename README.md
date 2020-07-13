@@ -63,4 +63,4 @@ However, we don't know effectively how these features affect house prices analyt
 
 4.3. What about for an upper income class member (median upper income)?”
 
-![Urban developer](/data/images/Screenshot-2020-06-30-at-19.32.02.png
+![Urban developer](/data/images/Screenshot-2020-06-30-at-19.32.02.png)

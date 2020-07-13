@@ -176,4 +176,5 @@ Only 1 proprietry was classified as affordable. King County is not affordable fo
  
 <br/>
 **King County is definitely a place for rich and extremely-rich landlords**
+
 ![](/data/images/Screenshot-2020-06-30-at-19.32.02.png)

@@ -80,11 +80,11 @@ However, we don't know effectively how these features affect house prices analyt
 
 **Urban developer**
 
-4.1. Where and if is it affordable for a lower income class member (median lower income) to buy a house in King County?
+   4.1. Where and if is it affordable for a lower income class member (median lower income) to buy a house in King County?
 
-4.2. What about for a middle income class member (median middle income)?
+   4.2. What about for a middle income class member (median middle income)?
 
-4.3. What about for an upper income class member (median upper income)?”
+   4.3. What about for an upper income class member (median upper income)?”
 
 ## Models
 For learning reasons, we tried to map dozens of models in order to:
@@ -142,12 +142,12 @@ When looking at qq-plots and heteroskedasticity, it is clear that the models sho
 We adopted design patterns in order to "map" several models according to conditions. The hierarchy used is:
 
  
+<br/>
+      1. First split: 
 
-1. First split: 
+         1.1. Dataset with outliers
 
-   1.1. Dataset with outliers
-
-   1.2 Dataset without ouliers
+         1.2 Dataset without ouliers
 
 <br/> 
 
